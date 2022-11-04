@@ -1,0 +1,50 @@
+header {
+	padding: 2em 0;
+	border-bottom: var(--border);
+
+	svg, img {
+		height: 50px;
+		display: block;
+	}
+}
+
+nav {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 2em;
+	}
+
+	a {
+		color: currentColor;
+
+		&:hover {
+			color: var(--b-link);
+			text-decoration: none;
+		}
+	}
+
+	.active a {
+		color: var(--b-link);
+	}
+}
+
+@media (max-width: 767px) {
+	header {
+		border-bottom: none;
+	}
+
+	nav {
+		width: 100%;
+		padding: .5em 0;
+		border-top: var(--border);
+		border-bottom: var(--border);
+		font-size: 14px;
+
+		ul {
+			justify-content: center;
+		}
+	}
+}

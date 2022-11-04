@@ -1,0 +1,18 @@
+footer {
+	padding: 2em 0;
+	border-top: var(--border);
+	font-size: .75em;
+
+	a {
+		color: currentColor;
+
+		&:hover {
+			color: var(--b-link);
+		}
+	}
+
+	svg {
+		width: 24px;
+		height: 24px;
+	}
+}
