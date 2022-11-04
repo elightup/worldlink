@@ -34,20 +34,35 @@
 				<h3 class="color-accent">Thông tin chi tiết đơn hàng</h3>
 				<input type="hidden" id="account_id" name="account_id">
 				<div class="form-row">
-					<label for="name">Tên công ty</label>
+					<label for="name">Tên khách hàng</label>
 					<input type="text" id="name" name="name" value="{{ old('name') }}">
 				</div>
 				<div class="form-row">
-					<label for="ma_so_thue">Mã số thuế</label>
-					<input type="text" id="ma_so_thue" name="ma_so_thue" value="{{ old('ma_so_thue') }}">
+					<label for="order_status">Tình trạng đơn hàng</label>
+					<input type="text" id="order_status" name="order_status" value="{{ old('order_status') }}">
 				</div>
 				<div class="form-row">
-					<label for="email">Email</label>
-					<input type="email" id="email" name="email" value="{{ old('email') }}" required>
+					<label for="order_create">Thời gian tạo</label>
+					<input type="text" id="order_create" name="order_create" value="{{ old('order_create') }}">
 				</div>
 				<div class="form-row">
-					<label for="phone">Số điện thoại</label>
-					<input type="text" id="phone" name="phone" value="{{ old('phone') }}" required>
+					<!-- <label for="">Chi tiết hàng hóa</label> -->
+					<table role="grid">
+						<thead role="rowgroup">
+							<tr role="row">
+								<th scope="col" class="cell-code k-header">Mã hàng</th>
+								<th scope="col" class="cell-auto k-header">Tên hàng</th>
+								<th scope="col" class="cell-quantity k-header">Số lượng</th>
+								<th scope="col" class="cell-total txtR k-header">Đơn giá</th>
+								<th scope="col" class="cell-quantity k-header">Giảm giá</th>
+								<th scope="col" class="cell-total txtR k-header">Giá bán</th>
+								<th scope="col" class="cell-total txtR k-header th-show">Thành tiền</th>
+							</tr>
+						</thead>
+						<tbody class="order_details">
+
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</form>
