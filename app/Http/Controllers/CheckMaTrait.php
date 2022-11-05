@@ -3,19 +3,34 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 trait CheckMaTrait {
 	public function check_ma( $search ) {
-		$client   = new Client();
-		$request  = $client->request( 'GET', 'https://public.kiotapi.com/orders/code/' . $search, [
-			'headers' => [
-				'Retailer'      => 'dichthuatworldlink',
-				'Authorization' => 'Bearer ' . $this->get_token(),
-			],
-			'verify'  => false,
-		] );
-		$response = json_decode( $request->getBody() );
-		return $response;
+		$client = new Client();
+		try {
+			$request  = $client->request( 'GET', 'https://public.kiotapi.com/orders/code/' . $search, [
+				'headers' => [
+					'Retailer'      => 'dichthuatworldlink',
+					'Authorization' => 'Bearer ' . $this->get_token(),
+				],
+				'verify'  => false,
+			] );
+			$response = json_decode( $request->getBody() );
+			$result   = [
+				'code' => $response->code ? true : false,
+				'data' => $response,
+			];
+		} catch ( ClientException $e ) {
+			// echo Psr7\Message::toString( $e->getRequest() );
+			// echo Psr7\Message::toString( $e->getResponse() );
+			$result = [
+				'code' => false,
+			];
+		}
+
+		return $result;
+
 	}
 	public function get_token() {
 		$client   = new Client();

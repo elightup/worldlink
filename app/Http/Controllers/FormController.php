@@ -19,13 +19,17 @@ class FormController extends Controller {
 			'Cancel'    => 'Đã hủy',
 		];
 
-		$old_date = strtotime( $response->createdDate );
-		return response()->json( [
-			'success'       => 'Done',
-			'name'          => $response->customerName,
-			'status'        => $status[ $response->statusValue ],
-			'create_date'   => gmdate( 'd/m/Y H:i', $old_date ),
-			'order_details' => $response->orderDetails,
-		] );
+		$return = [
+			'success' => $response['code'],
+		];
+		if ( $response['code'] ) {
+			$old_date = strtotime( $response['data']->createdDate );
+
+			$return['name']          = $response['data']->customerName;
+			$return['status']        = $status[ $response['data']->statusValue ];
+			$return['create_date']   = gmdate( 'd/m/Y H:i', $old_date );
+			$return['order_details'] = $response['data']->orderDetails;
+		}
+		return $return;
 	}
 }

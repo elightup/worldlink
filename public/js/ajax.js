@@ -29,7 +29,8 @@ jQuery( function( $ ) {
 						return;
 					}
 
-					$( '.result-check' ).removeClass( 'alert--danger' );
+					$( '.result-check' ).removeClass( 'alert alert--danger' );
+					$( '.result-check' ).html( '' );
 					$( '#name' ).val( result.name );
 					$( '#order_status' ).val( result.status );
 					$( '#order_create' ).val( result.create_date );
@@ -39,7 +40,7 @@ jQuery( function( $ ) {
 		} );
 	}
 
-	// Html popup thông tin user
+	// Html thông tin đơn hàng
 	function htmlSuccess( data ) {
 		// const { name, email, phone } = data;
 
