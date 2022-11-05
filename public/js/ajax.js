@@ -20,6 +20,7 @@ jQuery( function( $ ) {
 				success: function (result) {
 					$( '.form-progress' ).hide();
 					if ( ! result.success ) {
+						$( '.form__content-ajax' ).addClass( 'hidden' );
 						$( '.result-check' ).addClass( 'alert alert--danger' );
 						$( '.result-check' ).html( 'Thông tin đơn hàng chưa chính xác' );
 						$( '#name' ).val( '' );
@@ -29,6 +30,7 @@ jQuery( function( $ ) {
 						return;
 					}
 
+					$( '.form__content-ajax' ).removeClass( 'hidden' );
 					$( '.result-check' ).removeClass( 'alert alert--danger' );
 					$( '.result-check' ).html( '' );
 					$( '#name' ).val( result.name );

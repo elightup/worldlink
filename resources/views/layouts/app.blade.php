@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="csrf_token" content="{{ csrf_token() }}" />
 
-        <title>Wordlink</title>
+        <title>Worldlink</title>
         @yield('meta')
 
         <link rel="preconnect" href="https://i.imgur.com">

@@ -24,13 +24,13 @@
 			<div class="form__check-code">
 				<label for="search">Tìm kiếm thông tin</label>
 				<div style="display: flex">
-					<input type="text" id="search" name="search" value="{{ old('search') }}" placeholder="Điền tên, số điện thoại hoặc email để tìm kiếm thông tin" required>
+					<input type="text" id="search" name="search" value="{{ old('search') }}" placeholder="Điền mã đơn hàng để tìm kiếm thông tin" required>
 					<a class="button check_ma">Tìm kiếm</a>
 				</div>
 			</div>
 			<div class="form-progress"><img src="{{ url( 'images/Loading_icon.gif' ) }}"></div>
 			<p class="result-check"></p>
-			<div class="form__content-ajax">
+			<div class="form__content-ajax hidden">
 				<h3 class="color-accent">Thông tin chi tiết đơn hàng</h3>
 				<input type="hidden" id="account_id" name="account_id">
 				<div class="form-row">
