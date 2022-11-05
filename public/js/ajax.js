@@ -55,10 +55,10 @@ jQuery( function( $ ) {
 					<td>${element.productCode}</td>
 					<td>${element.productName}</td>
 					<td>${element.quantity}</td>
-					<td>${element.price}</td>
-					<td>${element.discount}</td>
-					<td>${gia_ban}</td>
-					<td>${thanh_tien}</td>
+					<td>${formatNumber(0, 3, '.', ',', parseFloat( element.price ))}</td>
+					<td>${formatNumber(0, 3, '.', ',', parseFloat( element.discount ))}</td>
+					<td>${formatNumber(0, 3, '.', ',', parseFloat( gia_ban ))}</td>
+					<td>${formatNumber(0, 3, '.', ',', parseFloat( thanh_tien ))}</td>
 				</tr>
 			`;
 		} );
@@ -66,4 +66,9 @@ jQuery( function( $ ) {
 	}
 
 	check_ma();
+	function formatNumber(n, x, s, c, number) {
+		var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+			num = number.toFixed(Math.max(0, ~~n));
+		return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+	}
 } );
