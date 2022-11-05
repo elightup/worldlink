@@ -232,4 +232,14 @@
 		}
 
 	}
+	.form__check-code {
+		flex-direction: column;
+		label {
+			width: 100%;
+			margin: 0 0 15px;
+		}
+		> div {
+			width: 100%;
+		}
+	}
 }
