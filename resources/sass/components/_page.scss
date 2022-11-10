@@ -40,12 +40,10 @@
 }
 .form-row {
 	display: flex;
-	// justify-content: center;
-	// align-items: center;
 	margin-bottom: 24px;
 	label {
-		width: 25%;
-		margin: 5px 20px 0 0;
+		width: 15%;
+		margin: 0 5px 0 0;
 		font-weight: 700;
 	}
 	> input:not([size]):not([type=button i]):not([type=submit i]):not([type=reset i]):not([type=checkbox i]):not([type=radio i]),
@@ -58,6 +56,19 @@
 	.form-row-right {
 		width: 75%;
 	}
+	table {
+		thead {
+			background: #dcf4fc;
+			border: 1px solid #c5e7f2;
+		}
+		td, th {
+			padding: 10px;
+		}
+		tbody {
+			border-left: 1px solid #e8e8e8;
+			border-right: 1px solid #e8e8e8;
+		}
+	}
 	ul {
 		list-style-type: none;
 		padding: 0;
@@ -69,9 +80,6 @@
 			margin: 0 20px 0 5px;
 			width: 100%;
 		}
-	}
-	td, th {
-		padding: 15px 0;
 	}
 }
 .row-radio {
@@ -175,6 +183,12 @@
 @media (max-width: 767px) {
 	.contact {
 		text-align: left;
+	}
+	.form-row {
+		flex-direction: column;
+		label {
+			width: 100%;
+		}
 	}
 	.form-row table {
 		display: block;

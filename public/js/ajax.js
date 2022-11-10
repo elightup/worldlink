@@ -11,6 +11,10 @@ jQuery( function( $ ) {
 				}
 			} );
 			$( '.form-progress' ).show();
+			$( '#name' ).html( '' );
+			$( '#order_status' ).html( '' );
+			$( '#order_create' ).html( '' );
+			$( '.order_details' ).html( '' );
 			$.ajax( {
 				url: url,
 				method: 'post',
@@ -23,9 +27,9 @@ jQuery( function( $ ) {
 						$( '.form__content-ajax' ).addClass( 'hidden' );
 						$( '.result-check' ).addClass( 'alert alert--danger' );
 						$( '.result-check' ).html( 'Thông tin đơn hàng chưa chính xác' );
-						$( '#name' ).val( '' );
-						$( '#order_status' ).val( '' );
-						$( '#order_create' ).val( '' );
+						$( '#name' ).html( '' );
+						$( '#order_status' ).html( '' );
+						$( '#order_create' ).html( '' );
 						$( '.order_details' ).html( '' );
 						return;
 					}
@@ -33,9 +37,9 @@ jQuery( function( $ ) {
 					$( '.form__content-ajax' ).removeClass( 'hidden' );
 					$( '.result-check' ).removeClass( 'alert alert--danger' );
 					$( '.result-check' ).html( '' );
-					$( '#name' ).val( result.name );
-					$( '#order_status' ).val( result.status );
-					$( '#order_create' ).val( result.create_date );
+					$( '#name' ).html( result.name );
+					$( '#order_status' ).html( result.status );
+					$( '#order_create' ).html( result.create_date );
 					$( '.order_details' ).html( htmlSuccess( result.order_details ) );
 				}
 			} );
