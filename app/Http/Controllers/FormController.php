@@ -19,15 +19,18 @@ class FormController extends Controller {
 			return $result;
 		}
 
-		$old_date    = strtotime( $response['data']->createdDate );
-		$description = $response['data']->description;
-
-		if ( str_contains( $description, 'Trạng thái đơn hàng:' ) ) {
-			$status = explode( 'Trạng thái đơn hàng:', $description );
-			$status = trim( end( $status ) );
-		} else {
-			$status = 'Description của bạn Không đúng định dạng';
-		}
+		$old_date         = strtotime( $response['data']->createdDate );
+		$description      = trim( strip_tags( $response['data']->description ) );
+		$status           = preg_split( "/(\n|&#10;)/", $description, 2, PREG_SPLIT_NO_EMPTY );
+		$status           = trim( end( $status ) );
+		$default_statuses = [
+			'Draft'     => 'Phiếu tạm',
+			'Confirm'   => 'Đã xác nhận',
+			'Shipping'  => 'Đang giao hàng',
+			'Completed' => 'Hoàn thành',
+			'Cancel'    => 'Đã hủy',
+		];
+		$status           = $status ?: $default_statuses[ $response['data']->statusValue ];
 
 		$result['name']          = $response['data']->customerName;
 		$result['status']        = $status;
