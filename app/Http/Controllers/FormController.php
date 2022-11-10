@@ -11,25 +11,29 @@ class FormController extends Controller {
 		$search   = $request->input( 'search' );
 		$response = $this->check_ma( $search );
 
-		$status = [
-			'Draft'     => 'Phiếu tạm',
-			'Confirm'   => 'Đã xác nhận',
-			'Shipping'  => 'Đang giao hàng',
-			'Completed' => 'Hoàn thành',
-			'Cancel'    => 'Đã hủy',
-		];
-
-		$return = [
+		$result = [
 			'success' => $response['code'],
 		];
-		if ( $response['code'] ) {
-			$old_date = strtotime( $response['data']->createdDate );
 
-			$return['name']          = $response['data']->customerName;
-			$return['status']        = $status[ $response['data']->statusValue ];
-			$return['create_date']   = gmdate( 'd/m/Y H:i', $old_date );
-			$return['order_details'] = $response['data']->orderDetails;
+		if ( ! $response['code'] ) {
+			return $result;
 		}
-		return $return;
+
+		$old_date    = strtotime( $response['data']->createdDate );
+		$description = $response['data']->description;
+
+		if ( str_contains( $description, 'Trạng thái đơn hàng:' ) ) {
+			$status = explode( 'Trạng thái đơn hàng:', $description );
+			$status = trim( end( $status ) );
+		} else {
+			$status = 'Description của bạn Không đúng định dạng';
+		}
+
+		$result['name']          = $response['data']->customerName;
+		$result['status']        = $status;
+		$result['create_date']   = gmdate( 'd/m/Y H:i', $old_date );
+		$result['order_details'] = $response['data']->orderDetails;
+
+		return $result;
 	}
 }
