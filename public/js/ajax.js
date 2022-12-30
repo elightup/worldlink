@@ -13,6 +13,8 @@ jQuery( function( $ ) {
 			$( '.form-progress' ).show();
 			$( '#name' ).html( '' );
 			$( '#order_status' ).html( '' );
+			$( '#shipping_status' ).html( '' );
+			$( '#order_note' ).html( '' );
 			$( '#order_create' ).html( '' );
 			$( '.order_details' ).html( '' );
 			$.ajax( {
@@ -29,6 +31,8 @@ jQuery( function( $ ) {
 						$( '.result-check' ).html( 'Thông tin đơn hàng chưa chính xác' );
 						$( '#name' ).html( '' );
 						$( '#order_status' ).html( '' );
+						$( '#shipping_status' ).html( '' );
+						$( '#order_note' ).html( '' );
 						$( '#order_create' ).html( '' );
 						$( '.order_details' ).html( '' );
 						return;
@@ -39,7 +43,9 @@ jQuery( function( $ ) {
 					$( '.result-check' ).html( '' );
 					$( '#name' ).html( result.name );
 					$( '#order_status' ).html( result.status );
+					$( '#shipping_status' ).html( result.shipping );
 					$( '#order_create' ).html( result.create_date );
+					$( '#order_note' ).html( result.order_note );
 					$( '.order_details' ).html( htmlSuccess( result.order_details ) );
 				}
 			} );

@@ -42,8 +42,16 @@
 					<div id="order_status"></div>
 				</div>
 				<div class="form-row">
+					<label for="shipping_status">Tình trạng giao hàng: </label>
+					<div id="shipping_status"></div>
+				</div>
+				<div class="form-row">
 					<label for="order_create">Thời gian tạo: </label>
 					<div id="order_create"></div>
+				</div>
+				<div class="form-row">
+					<label for="order_note">Ghi chú: </label>
+					<div id="order_note"></div>
 				</div>
 				<div class="form-row">
 					<table role="grid">

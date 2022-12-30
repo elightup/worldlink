@@ -22,6 +22,7 @@ class FormController extends Controller {
 		$old_date         = strtotime( $response['data']->createdDate );
 		$description      = trim( strip_tags( $response['data']->description ) );
 		$status           = preg_split( "/(\n|&#10;)/", $description, 2, PREG_SPLIT_NO_EMPTY );
+		$order_note       = reset( $status );
 		$status           = count( $status ) > 1 ? trim( end( $status ) ) : '';
 		$default_statuses = [
 			'Draft'     => 'Phiếu tạm',
@@ -34,7 +35,9 @@ class FormController extends Controller {
 
 		$result['name']          = $response['data']->customerName;
 		$result['status']        = $status;
+		$result['shipping']      = $default_statuses[ $response['data']->statusValue ];
 		$result['create_date']   = gmdate( 'd/m/Y H:i', $old_date );
+		$result['order_note']    = $order_note;
 		$result['order_details'] = $response['data']->orderDetails;
 
 		return $result;
